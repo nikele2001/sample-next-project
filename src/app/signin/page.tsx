@@ -14,7 +14,12 @@ function Page() {
 
     // Redirect to admin page if user is already logged in
     React.useEffect(() => {
-        if (user != null) router.push("/admin");
+        if (user != null) {
+            toast.success("Already logged in. Redirecting you in 3 seconds.");
+            setTimeout(() => {
+                return router.push("/admin");
+            }, 3000);
+        }
     }, [user]);
 
     const handleForm = async (event: any): Promise<void> => {
